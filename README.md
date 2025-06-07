@@ -17,9 +17,9 @@ DevLogBook is a minimal AI-powered developer journal that helps you reflect on y
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js + TypeScript + Bootstrap
-- **Backend**: Python (FastAPI or Flask)
-- **AI**: OpenAI GPT-3.5 Turbo or Transformers
+- **Frontend**: Next.js + TypeScript + Bootstrap
+- **Backend**: Python (FastAPI)
+- **AI**: OpenAI GPT-3.5 Turbo
 - **Storage**: Firebase
 
 ## 💻 Getting Started
@@ -30,11 +30,15 @@ git clone https://github.com/your-username/devlogbook.git
 cd devlogbook
 
 # Install frontend dependencies
-cd client
+cd devlogbook
 npm install
 
+# Run fronend
+npm run dev
+
 # Install backend dependencies
-cd ../server
+cd ../backend
 pip install -r requirements.txt
 
-# Run frontend and backend
+# Run backend
+uvirorn main:app --reload
