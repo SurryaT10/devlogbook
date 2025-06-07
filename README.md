@@ -26,7 +26,7 @@ DevLogBook is a minimal AI-powered developer journal that helps you reflect on y
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/devlogbook.git
+git clone https://github.com/SurryaT10/devlogbook.git
 cd devlogbook
 
 # Install frontend dependencies
