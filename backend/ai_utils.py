@@ -14,7 +14,7 @@ def summarize_entry(text: str) -> dict:
                 "content": (
                     "You are an AI Dev Coach. Given a developer's journal entry, "
                     "respond strictly in JSON format with the following keys:\n"
-                    "`tasks_completed`, `challenges_faced`, `next_steps`, `suggestions`, `productivity_tip`.\n"
+                    "`tasks_completed`, `challenges_faced`, `next_steps`, `suggestions`, `productivity_tip`.`mindset_insights`( 1-3 personalized reflective prompts, tool suggestions, or resource recommendations based on the entry)`\n"
                     "Each key should contain a brief, clear, and actionable string or list. Do not include any additional commentary."
                 )
             },
