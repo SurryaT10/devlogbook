@@ -26,16 +26,18 @@ async def summarize(entry: JournalEntry):
         summary = generate_insights(entry.text)
         entries.append({
             "text": entry.text,
-            "date": datetime.datetime.now(),
+            "date": datetime.now(),
             "summary": summary
         })
         return {"summary": summary}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
-@app.get("/weekly-report/{user_id}")
-async def weekly_report(user_id: str):
+@app.get("/weekly-report")
+async def weekly_report():
     one_week_ago = datetime.now() - timedelta(days=7)
-    summaries = [doc for doc in entries["summary"]]
-
+    summaries = [entry["summary"] for entry in entries]
+    
+    if (len(summaries) == 0): return {}
+    
     return generate_weekly_summary(summaries)
