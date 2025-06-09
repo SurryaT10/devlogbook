@@ -1,0 +1,5 @@
+Add a small tooltip or info icon: "These insights help you reflect on habits and improve your developer mindset."
+
+Show links to articles/videos if GPT returns any in mindset_insights.
+
+Allow the user to regenerate just the mindset insights (e.g. "Give me more mindset tips").
