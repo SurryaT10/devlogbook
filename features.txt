@@ -3,3 +3,31 @@ Add a small tooltip or info icon: "These insights help you reflect on habits and
 Show links to articles/videos if GPT returns any in mindset_insights.
 
 Allow the user to regenerate just the mindset insights (e.g. "Give me more mindset tips").
+
+1. Goal-Tracking & Progress Metrics
+What: Let users define goals (e.g. "Learn GraphQL") and track progress weekly based on their logs.
+Tech: NLP tagging + goal schema + timeline visualization (e.g. using react-calendar or vis.js)
+
+2. Dev Mood & Burnout Detection
+What: Use sentiment analysis or LLMs to assess developer mood or burnout risk from journal tone.
+Tech: transformers (like distilbert-base-uncased-finetuned-sst-2-english), or GPT
+
+3. AI-Generated Code Snippet Recommendations
+What: Recommend or auto-generate helpful code snippets/tools based on user's current blocker (e.g. "struggling with pagination in React" → show code).
+Tech: OpenAI Codex or GPT-4 + a code search index
+
+4. Smart Timeline & Highlights Feed
+What: Auto-generate a monthly/quarterly timeline and "milestone cards" with highlights (e.g., "3 major features shipped in May")
+Tech: GPT summary + visualization (e.g., react-timeline, victory, or D3)
+
+5. Habit Reinforcement via Micro-Coaching
+What: Provide micro-feedback or nudges (“Try Pomodoro next week to improve focus”) based on trends in entries
+Tech: Prompt templates + rules engine or embeddings
+
+6. Dev Assistant Chatbot
+What: Let users chat with an AI assistant that knows their log history and helps with productivity, tech choices, or code questions
+Tech: RAG pipeline (LangChain, Pinecone/FAISS) + GPT
+
+7. Team Mode (Multi-User Logging & Insights)
+What: Allow teams to log entries and get team-wide summaries, blockers, alignment reports
+Tech: Auth (Clerk/Auth0), Firestore/Postgres, GPT, dashboards
