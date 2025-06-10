@@ -11,6 +11,12 @@ DevLogBook is a minimal AI-powered developer journal that helps you reflect on y
   - 🔜 Next Steps
   - 💡 Suggestions
   - 🧠 Productivity Tips
+- View Weekly Report that aggregates your daily entries into:
+  - Progress Overview
+  - Top Blockers
+  - Suggestions
+  - Productivity Summary
+  - Task vs Challenge Trends (with charts)
 - Clean, responsive UI built with Bootstrap
 - GPT-powered backend summarization
 - Firebase for authentication and storage (optional)
