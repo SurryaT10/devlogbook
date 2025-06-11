@@ -1,13 +1,12 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from datetime import datetime, timedelta
+from datetime import datetime
 from ai_utils import generate_insights
 from weekly_report import generate_weekly_summary 
 
 app = FastAPI()
 
-# Allow frontend to call backend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -26,7 +25,7 @@ async def summarize(entry: JournalEntry):
         summary = generate_insights(entry.text)
         entries.append({
             "text": entry.text,
-            "date": datetime.now(),
+            "date": datetime.today().strftime('%Y-%m-%d'),
             "summary": summary
         })
         return {"summary": summary}
@@ -35,9 +34,6 @@ async def summarize(entry: JournalEntry):
     
 @app.get("/weekly-report")
 async def weekly_report():
-    one_week_ago = datetime.now() - timedelta(days=7)
-    summaries = [entry["summary"] for entry in entries]
+    if (len(entries) == 0): return {}
     
-    if (len(summaries) == 0): return {}
-    
-    return generate_weekly_summary(summaries)
+    return generate_weekly_summary(entries)

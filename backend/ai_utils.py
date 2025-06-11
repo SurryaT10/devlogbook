@@ -31,13 +31,13 @@ def generate_insights(text: str) -> dict:
     content = response.choices[0].message.content.strip()
     return json.loads(content)
 
-def generate_weekly_summary_util(summaries: List[dict]):
+def generate_weekly_summary_util(entries: List[dict]):
     text_dump = "\n\n".join(
-    f"Entry {i+1}:\n"
-    f"Tasks: {', '.join(entry['tasks_completed'])}\n"
-    f"Challenges: {entry['challenges_faced']}\n"
-    f"Next Steps: {entry['next_steps']}"
-    for i, entry in enumerate(summaries)
+        f"Entry {i+1}:\n"
+        f"Tasks: {', '.join(entry['summary']['tasks_completed'])}\n"
+        f"Challenges: {entry['summary']['challenges_faced']}\n"
+        f"Next Steps: {entry['summary']['next_steps']}"
+        for i, entry in enumerate(entries)
     )
 
     response = client.chat.completions.create(
@@ -51,5 +51,4 @@ def generate_weekly_summary_util(summaries: List[dict]):
             {"role": "user", "content": text_dump}
         ]
     )
-    
     return response
