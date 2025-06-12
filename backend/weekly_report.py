@@ -35,7 +35,6 @@ def generate_weekly_summary(entries: List[dict]) -> dict:
     # Compute daily_chart_data
     day_counts = defaultdict(lambda: {"tasks": 0, "blockers": 0})
     for entry in entries:
-        print(entry)
         date = datetime.strptime(entry['date'], "%Y-%m-%d")
         day = date.strftime("%a")
         day_counts[day]["tasks"] += len(entry['summary']["tasks_completed"])

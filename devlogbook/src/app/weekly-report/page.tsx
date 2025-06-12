@@ -5,12 +5,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import { getWeeklyReport } from "@/services/api";
 
+interface DailyChartData {
+  day: string;
+  tasks: number;
+  blockers: number;
+}
+
 interface WeeklySummary {
   progress_overview: string;
   top_blockers: string[];
   suggestions: string[];
   productivity_summary: string;
   report_text: string;
+  daily_chart_data: DailyChartData[];
 }
 
 const isEmptyReport = (report: Partial<WeeklySummary> | null): boolean => {
@@ -57,14 +64,6 @@ const WeeklyReport: React.FC = () => {
     );
   }
 
-  const dummyChartData = [
-    { day: 'Mon', tasks: 3, blockers: 1 },
-    { day: 'Tue', tasks: 2, blockers: 2 },
-    { day: 'Wed', tasks: 4, blockers: 0 },
-    { day: 'Thu', tasks: 1, blockers: 2 },
-    { day: 'Fri', tasks: 5, blockers: 1 },
-  ];
-
   return (
     <div className="container mt-5">
       <div className="card shadow-sm mb-4">
@@ -102,7 +101,7 @@ const WeeklyReport: React.FC = () => {
         <div className="card-body">
           <h5 className="card-title">📈 Task vs Challenge Trend</h5>
           <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={dummyChartData}>
+            <LineChart data={report?.daily_chart_data || []}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="day" />
               <YAxis />
