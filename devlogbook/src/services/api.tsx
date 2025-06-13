@@ -18,3 +18,14 @@ export async function getWeeklyReport() {
 
   return data;
 }
+
+export async function createGoal(goal: any) {
+  const response = await fetch("http://localhost:8000/goals", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(goal),
+  });
+
+  if (!response.ok) throw new Error("Failed to create goal");
+  return await response.json();
+}

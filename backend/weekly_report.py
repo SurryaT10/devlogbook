@@ -49,5 +49,4 @@ def generate_weekly_summary(entries: List[dict]) -> dict:
 
     summary["daily_chart_data"] = daily_chart_data
     
-    print(summary)
     return summary
